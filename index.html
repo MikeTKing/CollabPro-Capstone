@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CollabPro</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div id="app">
+        <!-- Loading Spinner -->
+        <div id="loading-spinner" class="spinner"></div>
+
+        <!-- Login Section -->
+        <div id="login-screen" class="screen active">
+            <h1>CollabPro</h1>
+            <p class="hero-text">Collaborate Seamlessly with CollabPro</p>
+            <nav>
+                <ul>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="our-mission.html">Our Mission</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html">Terms of Service</a></li>
+                    <li><a href="accessibility.html">Accessibility</a></li>
+
+                </ul>
+            </nav>
+            <form id="login-form">
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <div id="login-error" class="error"></div>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" id="signup-link">Sign Up</a></p>
+        </div>
+
+        <!-- Signup Section -->
+        <div id="signup-screen" class="screen">
+            <h1>Sign Up for CollabPro</h1>
+            <p class="hero-text">Collaborate Seamlessly with CollabPro</p>
+            <nav>
+                <ul>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="our-mission.html">Our Mission</a></li>
+                </ul>
+            </nav>
+            <form id="signup-form">
+                <input type="text" id="signup-name" placeholder="Name" required>
+                <input type="email" id="signup-email" placeholder="Email" required>
+                <select id="signup-role" required>
+                    <option value="" disabled selected>Select Role</option>
+                    <option value="Project Manager">Project Manager</option>
+                    <option value="Team Member">Team Member</option>
+                </select>
+                <input type="password" id="signup-password" placeholder="Password" required>
+                <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required>
+                <div id="signup-error" class="error"></div>
+                <button type="submit">Sign Up</button>
+            </form>
+            <p>Already have an account? <a href="#" id="back-to-login">Login</a></p>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div id="dashboard-screen" class="screen">
+            <nav>
+                <h1>CollabPro</h1>
+                <ul>
+                    <li><a href="#" class="nav-link active" data-screen="dashboard-screen">Dashboard</a></li>
+                    <li><a href="#" class="nav-link" data-screen="tasks-screen">Tasks</a></li>
+                    <li><a href="#" class="nav-link" data-screen="profile-screen">Profile</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="our-mission.html">Our Mission</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html">Terms of Service</a></li>
+                    <li><a href="accessibility.html">Accessibility</a></li
+                    <li><a href="#" id="logout">Logout</a></li>
+                </ul>
+            </nav>
+            <h2 id="welcome-message"></h2>
+            <h3>Notifications</h3>
+            <ul id="notification-list"></ul>
+        </div>
+
+        <!-- Tasks Section -->
+        <div id="tasks-screen" class="screen">
+            <nav>
+                <h1>CollabPro</h1>
+                <ul>
+                    <li><a href="#" class="nav-link" data-screen="dashboard-screen">Dashboard</a></li>
+                    <li><a href="#" class="nav-link active" data-screen="tasks-screen">Tasks</a></li>
+                    <li><a href="#" class="nav-link" data-screen="profile-screen">Profile</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="our-mission.html">Our Mission</a></li>
+                    <li><a href="#" id="logout">Logout</a></li>
+                </ul>
+            </nav>
+            <h2>Tasks</h2>
+            <div>
+                <label>Filter by Status:</label>
+                <select id="filter-status">
+                    <option value="All">All</option>
+                    <option value="Not Started">Not Started</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                </select>
+                <label>Sort by:</label>
+                <select id="sort-by">
+                    <option value="due-asc">Due Date (Asc)</option>
+                    <option value="due-desc">Due Date (Desc)</option>
+                    <option value="priority">Priority</option>
+                </select>
+            </div>
+            <form id="task-form">
+                <input type="text" id="task-title" placeholder="Task Title" required>
+                <textarea id="task-desc" placeholder="Description" required></textarea>
+                <select id="task-priority" required>
+                    <option value="" disabled selected>Select Priority</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+                <input type="date" id="task-due" required>
+                <input type="text" id="task-assignee" placeholder="Assign to" required>
+                <div id="task-error" class="error"></div>
+                <button type="submit">Create Task</button>
+            </form>
+            <!-- Task List as Table -->
+            <table id="task-list">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Assignee</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <div id="collab-section" style="display: none;">
+                <h3>Collaboration</h3>
+                <textarea id="comment" placeholder="Add a comment"></textarea>
+                <button type="button" id="submit-comment">Submit Comment</button>
+                <ul id="comment-list"></ul>
+            </div>
+        </div>
+
+        <!-- Profile Section -->
+        <div id="profile-screen" class="screen">
+            <nav>
+                <h1>CollabPro</h1>
+                <ul>
+                    <li><a href="#" class="nav-link" data-screen="dashboard-screen">Dashboard</a></li>
+                    <li><a href="#" class="nav-link" data-screen="tasks-screen">Tasks</a></li>
+                    <li><a href="#" class="nav-link active" data-screen="profile-screen">Profile</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="our-mission.html">Our Mission</a></li>
+                    <li><a href="#" id="logout">Logout</a></li>
+                </ul>
+            </nav>
+            <h2>Profile</h2>
+            <form id="profile-form">
+                <label>Name:</label>
+                <input type="text" id="profile-name" required>
+                <label>Email:</label>
+                <input type="email" id="profile-email" required>
+                <label>Role:</label>
+                <input type="text" id="profile-role" readonly>
+                <label>New Password (leave blank to keep current):</label>
+                <input type="password" id="profile-password">
+                <label>Confirm New Password:</label>
+                <input type="password" id="profile-confirm-password">
+                <div id="profile-error" class="error"></div>
+                <button type="submit">Update Profile</button>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2025 Michael King]. All rights reserved.</p>
+            <p>Contact us: <a href="mailto:[collabpro@gmail.com]">[your-email@example.com]</a></p>
+            
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
