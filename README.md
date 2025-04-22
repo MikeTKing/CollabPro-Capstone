@@ -11,4 +11,5 @@ A web-based collaborative project management tool for small teams.
 Open `index.html` in a web browser.
 ## Live Demo
 
-Check out the live demo of CollabPro here: [https://mikeking.github.io/CollabPro-Capstone/index.html](https://mikeking.github.io/CollabPro-Capstone/index.html)
+Check out the live demo of CollabPro here
+[View Live Demo](http://127.0.0.1:5500/index.html)
